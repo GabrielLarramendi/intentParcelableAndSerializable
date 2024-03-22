@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         val editText = findViewById<EditText>(R.id.editTextField)
         val buttonChangeActivity = findViewById<Button>(R.id.changeActivityButton)
         val buttonParcel = findViewById<Button>(R.id.buttonParcel)
+        val buttonSerializable = findViewById<Button>(R.id.buttonSerializable)
 
         buttonToast.setOnClickListener(object: View.OnClickListener {
             override fun onClick(v: View?) {
@@ -38,6 +39,12 @@ class MainActivity : AppCompatActivity() {
             val client = Client(1, "Gabriel")
             val intent = Intent(this, Activity02Intent::class.java)
             intent.putExtra("client", client)
+            startActivity(intent)
+        }
+
+        buttonSerializable.setOnClickListener {
+            val intent = Intent(this, Activity02Intent::class.java)
+            intent.putExtra("person", Person("Laura", 25))
             startActivity(intent)
         }
     }

@@ -42,4 +42,12 @@
         app:layout_constraintStart_toStartOf="@id/changeActivityButton"
         app:layout_constraintTop_toBottomOf="@id/changeActivityButton" />
 
+    <Button
+        android:id="@+id/buttonSerializable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/main_button_serializable"
+        app:layout_constraintStart_toStartOf="@id/buttonParcel"
+        app:layout_constraintTop_toBottomOf="@id/buttonParcel" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

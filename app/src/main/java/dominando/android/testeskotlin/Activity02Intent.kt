@@ -16,17 +16,19 @@ class Activity02Intent : AppCompatActivity() {
         val age = intent.getIntExtra("age", -100)
 
         val client = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            intent.getParcelableExtra("clent", Client::class.java)
+            intent.getParcelableExtra("client", Client::class.java)
         } else {
             intent.getParcelableExtra<Client>("client")
         }
 
-        if (client != null) {
-            dataClientText.text = getString(R.string.intentParcelResponseString, client.name, client.code)
-        }
-        else {
-            dataClientText.text = getString(R.string.intentResponseString, name, age)
-        }
+        val person = intent.getSerializableExtra("person") as Person?
 
+        dataClientText.text = if (client != null) {
+            getString(R.string.intentParcelResponseString, client.name, client.code)
+        } else if (person != null) {
+            getString(R.string.intentResponseString, person.name, person.age)
+        } else {
+            getString(R.string.intentResponseString, name, age)
+        }
     }
 }
