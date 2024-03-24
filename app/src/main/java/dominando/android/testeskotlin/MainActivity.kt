@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import org.parceler.Parcels
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         buttonParcel.setOnClickListener {
             val client = Client(1, "Gabriel")
+
             val intent = Intent(this, Activity02Intent::class.java)
             intent.putExtra("client", client)
             startActivity(intent)

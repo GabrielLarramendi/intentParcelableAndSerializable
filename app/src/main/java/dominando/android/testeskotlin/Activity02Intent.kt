@@ -4,6 +4,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import org.parceler.Parcels
 
 class Activity02Intent : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,14 +13,10 @@ class Activity02Intent : AppCompatActivity() {
 
         val dataClientText = findViewById<TextView>(R.id.textViewResponseIntent)
 
-        val name = intent.getStringExtra("name")
+        val name = intent.getStringExtra(   "name")
         val age = intent.getIntExtra("age", -100)
 
-        val client = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            intent.getParcelableExtra("client", Client::class.java)
-        } else {
-            intent.getParcelableExtra<Client>("client")
-        }
+        val client = intent.getSerializableExtra("client") as Client?
 
         val person = intent.getSerializableExtra("person") as Person?
 
